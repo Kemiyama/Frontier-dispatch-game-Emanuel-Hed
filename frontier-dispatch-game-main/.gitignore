@@ -75,6 +75,8 @@ coverage/
 # ============================================================
 
 .vs/
+.vsconfig
+frontier-dispatch-game.slnx
 
 # Keep VS Code project settings only if we deliberately add them.
 # Uncomment this if we decide not to version .vscode:

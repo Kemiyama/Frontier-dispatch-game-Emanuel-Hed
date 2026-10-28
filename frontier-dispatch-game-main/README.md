@@ -1,40 +1,28 @@
-# Frontier Dispatch - DSA Unity Laboratory
+# Frontier Dispatch — Individual Assignment Starter
 
-A deliberately simple top-down/logistics sandbox used throughout the Data Structures and Algorithms course.
+This repository is the frozen starter project for the individual assignment in **Data Structures and Algorithms**.
 
-## Why this project exists
+Start with **ASSIGNMENT_README.md** and the assignment specification provided in Omniway.
 
-The course uses three layers:
+## Important
 
-1. **Reason** - paper, diagrams, group discussion.
-2. **Implement** - headless C#/.NET labs and tests.
-3. **Apply** - Unity visualization/integration/profiling.
+- The assessed algorithmic code lives under `Assets/DSA/Core/`.
+- The same Core source files are compiled by `Standalone/FrontierDispatch.sln`.
+- Unity is provided as an application/visualization layer; Unity-dependent implementation is not required for G or VG unless the assignment specification explicitly says otherwise.
+- Do **not** run `Tools > DSA > Build Course Scenes`. The distributed project already contains the course scenes.
+- Do **not** begin by implementing Dijkstra. First establish and record the supplied baseline.
 
-The Unity layer is not required for the assessed algorithmic objectives. The reusable core under `Assets/DSA/Core` has **no UnityEngine dependency** and is also compiled by the standalone .NET solution under `Standalone/`.
+## First verification
 
-## Game premise
+From the repository root:
 
-You operate a frontier dispatch network. Outposts are connected by roads with travel costs. Couriers receive jobs, route through the world, and interact with entities identified by IDs.
+```bash
+dotnet restore Standalone/FrontierDispatch.sln
+dotnet build Standalone/FrontierDispatch.sln
+dotnet test Standalone/FrontierDispatch.sln
+dotnet run --project Standalone/src/FrontierDispatch.App -- --baseline
+```
 
-This naturally supports the course topics:
+The untouched starter should build successfully. The existing world-query tests should pass, while later assignment-contract tests remain skipped/ignored until their corresponding phases.
 
-- stacks: undo route/editor actions;
-- queues: dispatch jobs;
-- hashing: outpost/entity lookup by ID;
-- trees: region/mission hierarchy;
-- priority queues: urgent jobs and pathfinding frontier;
-- graphs: road network;
-- Dijkstra/A*: route planning;
-- profiling: larger worlds, repeated queries, allocations, loading/preparation.
-
-## Initial teacher setup
-
-1. Create/open a normal Unity 6 project.
-2. Copy this package's `Assets/DSA` folder into the project.
-3. Let Unity compile.
-4. Run **Tools > DSA > Build Course Scenes** once.
-5. Press Play in `Assets/DSA/Scenes/Launcher.unity`.
-6. Verify the standalone solution separately with `dotnet build/test` on a machine with .NET 10.
-7. Commit the generated scenes and `.meta` files to the course Unity repository.
-
-The distributed student repository should contain the generated scenes already. Students should not need to run the builder.
+For Unity, open the **repository root** as a Unity 6.3 LTS project and let the initial import finish. The project already contains the scenes and metadata required for normal use.
