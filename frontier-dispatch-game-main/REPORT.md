@@ -4,10 +4,27 @@ Keep this concise and specific to your implementation.
 
 ## 1. Initial analysis
 
-- How are locations and connections represented in the baseline?
+- How are locations and connections represented in the baseline
+- Answer: Locations are represented as a ID, Name, Position and a type. For an example > "734, Stockholm, WorldPosition, City". 
+Connections are represented as "FromLocationId, ToLocationId and TravelCost". Both classes have constructors. 
+WorldData then takes the data from both Locations and Connectins, copies the collections from the lists and then copies it into arrays. 
+Which is then passed through the WorldData Constructor. The WorldQueries searches through the stored data in WorldData. 
+
+"FindLocationById" Goes through the whole world.locations.count one by one with ++i, untill it finds the right one and returns. 
+"FindoutGoingConnections" iterates through the connections array to find all connections orignating from a specific location.
+
 - Which operations appear frequent?
+- Answer:
+
 - Which operation(s) do you predict may scale poorly?
+- Answer: And this way of doing things when searching throughout a large list is inefficient due to how much actuall computing power and time is wasted. 
+Which both in hindsight can be negiable, but only negiable in small scale sitiuations.
+When working with bigger databases this quickly builds up and makes everything worse fast.
+
+Example: Imagine you have 2,500 locations and then you have to preform 5000 searches. That is 2500x5000 and is then 12,500,000 searches.
+
 - What will you investigate first?
+- Answer:
 
 ## 2. Data representation
 
